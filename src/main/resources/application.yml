@@ -1,0 +1,15 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: false
+    show-sql: true
+  datasource:
+    leader:
+      url: jdbc:postgresql://localhost:5432/ecommerce-leader
+      username: postgres
+      password: 12345
+    follower:
+      url: jdbc:postgresql://localhost:5432/ecommerce-follower
+      username: postgres
+      password: 12345
