@@ -32,7 +32,7 @@ public class LeaderJpaConfiguration {
             @Qualifier("leaderDataSource") DataSource dataSource,
             EntityManagerFactoryBuilder builder) {
         Map<String, Object> properties = new HashMap<String, Object>();
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.hbm2ddl.auto", "validate");
         return builder.dataSource(dataSource)
                 .packages("com.example.ecommercemongodb.entity")
                 .properties(properties)

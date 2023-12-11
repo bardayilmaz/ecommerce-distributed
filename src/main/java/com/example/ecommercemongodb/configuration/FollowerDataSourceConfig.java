@@ -20,10 +20,9 @@ public class FollowerDataSourceConfig {
 
     @Primary
     @Bean(name = "followerDataSource")
-    public DataSource leaderDataSource() {
+    public DataSource followerDataSource() {
         return followerDataSourceProperties()
                 .initializeDataSourceBuilder()
                 .build();
     }
-
 }

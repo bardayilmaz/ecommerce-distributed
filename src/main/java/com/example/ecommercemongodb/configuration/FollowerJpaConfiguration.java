@@ -1,9 +1,5 @@
 package com.example.ecommercemongodb.configuration;
 
-import com.example.ecommercemongodb.entity.Customer;
-import com.example.ecommercemongodb.entity.Order;
-import com.example.ecommercemongodb.entity.Product;
-
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +31,7 @@ public class FollowerJpaConfiguration {
             @Qualifier("followerDataSource") DataSource dataSource,
             EntityManagerFactoryBuilder builder) {
         Map<String, Object> properties = new HashMap<String, Object>();
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+        properties.put("hibernate.hbm2ddl.auto", "validate");
         return builder.dataSource(dataSource)
                 .packages("com.example.ecommercemongodb.entity")
                 .properties(properties)
