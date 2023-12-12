@@ -1,4 +1,4 @@
-package com.example.ecommercemongodb.configuration;
+package com.example.ecommerceuser.configuration;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.example.ecommercemongodb.configuration;
+package com.example.ecommerceuser.configuration;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,17 +9,19 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 @Configuration
-public class LeaderDataSourceConfig {
+public class FollowerDataSourceConfig {
+
 
     @Bean
-    @ConfigurationProperties("spring.datasource.leader")
-    public DataSourceProperties leaderDataSourceProperties() {
+    @ConfigurationProperties("spring.datasource.follower")
+    public DataSourceProperties followerDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Bean(name = "leaderDataSource")
-    public DataSource leaderDataSource() {
-        return leaderDataSourceProperties()
+    @Primary
+    @Bean(name = "followerDataSource")
+    public DataSource followerDataSource() {
+        return followerDataSourceProperties()
                 .initializeDataSourceBuilder()
                 .build();
     }

@@ -1,4 +1,4 @@
-package com.example.ecommercemongodb.configuration;
+package com.example.ecommerceuser.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

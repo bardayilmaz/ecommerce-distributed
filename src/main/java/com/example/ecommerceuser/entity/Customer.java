@@ -1,4 +1,4 @@
-package com.example.ecommercemongodb.entity;
+package com.example.ecommerceuser.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,10 +6,9 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer")
 @Getter
 @Setter
 public class Customer extends BaseEntity{
@@ -25,6 +24,4 @@ public class Customer extends BaseEntity{
 
     @Column(name = "password")
     private String password;
-
-
 }

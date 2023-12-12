@@ -13,7 +13,7 @@ spring:
       username: postgres
       password: 12345
     follower:
-      url: jdbc:postgresql://192.168.229.128:5432/ecommerce?ssl=false&sslmode=disable
+      url: jdbc:postgresql://localhost:5432/ecommerce?ssl=false&sslmode=disable
       username: postgres
       password: 12345
 

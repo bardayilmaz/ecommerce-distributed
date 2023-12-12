@@ -1,4 +1,4 @@
-package com.example.ecommercemongodb.model.request;
+package com.example.ecommerceuser.model.request;
 
 import lombok.Data;
 

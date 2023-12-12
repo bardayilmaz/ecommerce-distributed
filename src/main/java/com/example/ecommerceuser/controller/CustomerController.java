@@ -1,8 +1,8 @@
-package com.example.ecommercemongodb.controller;
+package com.example.ecommerceuser.controller;
 
-import com.example.ecommercemongodb.model.request.CustomerRequest;
-import com.example.ecommercemongodb.model.response.CustomerResponse;
-import com.example.ecommercemongodb.service.CustomerService;
+import com.example.ecommerceuser.model.request.CustomerRequest;
+import com.example.ecommerceuser.model.response.CustomerResponse;
+import com.example.ecommerceuser.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,5 +24,10 @@ public class CustomerController {
     @PostMapping
     public CustomerResponse addCustomer(@RequestBody @Valid CustomerRequest customerRequest) {
         return customerService.addCustomer(customerRequest);
+    }
+
+    @GetMapping("/{id}")
+    public CustomerResponse getCustomers(@PathVariable Long id) {
+        return customerService.getCustomer(id);
     }
 }

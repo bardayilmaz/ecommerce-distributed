@@ -1,4 +1,4 @@
-package com.example.ecommercemongodb.configuration;
+package com.example.ecommerceuser.configuration;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

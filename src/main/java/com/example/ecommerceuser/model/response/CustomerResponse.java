@@ -1,14 +1,14 @@
-package com.example.ecommercemongodb.model.response;
+package com.example.ecommerceuser.model.response;
 
-import com.example.ecommercemongodb.entity.Customer;
+import com.example.ecommerceuser.entity.Customer;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Builder
 public class CustomerResponse {
+
+    private Long id;
 
     private String firstName;
 
@@ -18,6 +18,7 @@ public class CustomerResponse {
 
     public static CustomerResponse fromEntity(Customer customer) {
         return CustomerResponse.builder()
+                .id(customer.getId())
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
                 .address(customer.getAddress())

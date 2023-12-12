@@ -1,10 +1,9 @@
-package com.example.ecommercemongodb.configuration;
+package com.example.ecommerceuser.configuration;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -19,16 +18,15 @@ import java.util.Objects;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        basePackages = "com.example.ecommercemongodb.repository.read",
-        entityManagerFactoryRef = "followerEntityManagerFactory",
-        transactionManagerRef = "followerTransactionManager"
+        basePackages = "com.example.ecommerceuser.repository.write",
+        entityManagerFactoryRef = "leaderEntityManagerFactory",
+        transactionManagerRef = "leaderTransactionManager"
 )
-public class FollowerJpaConfiguration {
+public class LeaderJpaConfiguration {
 
     @Bean
-    @Primary
-    public LocalContainerEntityManagerFactoryBean followerEntityManagerFactory(
-            @Qualifier("followerDataSource") DataSource dataSource,
+    public LocalContainerEntityManagerFactoryBean leaderEntityManagerFactory(
+            @Qualifier("leaderDataSource") DataSource dataSource,
             EntityManagerFactoryBuilder builder) {
         Map<String, Object> properties = new HashMap<String, Object>();
         properties.put("hibernate.hbm2ddl.auto", "validate");
@@ -39,9 +37,8 @@ public class FollowerJpaConfiguration {
     }
 
     @Bean
-    @Primary
-    public PlatformTransactionManager followerTransactionManager (
-            @Qualifier("followerEntityManagerFactory") LocalContainerEntityManagerFactoryBean followerEntityManagerFactory) {
-        return new JpaTransactionManager(Objects.requireNonNull(followerEntityManagerFactory.getObject()));
+    public PlatformTransactionManager leaderTransactionManager (
+            @Qualifier("leaderEntityManagerFactory") LocalContainerEntityManagerFactoryBean leaderEntityManagerFactory) {
+        return new JpaTransactionManager(Objects.requireNonNull(leaderEntityManagerFactory.getObject()));
     }
 }

@@ -1,10 +1,10 @@
-package com.example.ecommercemongodb.service;
+package com.example.ecommerceuser.service;
 
-import com.example.ecommercemongodb.entity.Customer;
-import com.example.ecommercemongodb.model.request.CustomerRequest;
-import com.example.ecommercemongodb.model.response.CustomerResponse;
-import com.example.ecommercemongodb.repository.read.CustomerFollowerRepository;
-import com.example.ecommercemongodb.repository.write.CustomerRepository;
+import com.example.ecommerceuser.entity.Customer;
+import com.example.ecommerceuser.model.request.CustomerRequest;
+import com.example.ecommerceuser.model.response.CustomerResponse;
+import com.example.ecommerceuser.repository.read.CustomerFollowerRepository;
+import com.example.ecommerceuser.repository.write.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +31,9 @@ public class CustomerService {
         customer.setLastName(customerRequest.getLastName());
         customerRepository.save(customer);
         return CustomerResponse.fromEntity(customer);
+    }
+
+    public CustomerResponse getCustomer(Long id) {
+        return customerFollowerRepository.findById(id).map(CustomerResponse::fromEntity).orElseThrow(() -> new RuntimeException("Error"));
     }
 }

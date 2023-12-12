@@ -1,27 +1,24 @@
-package com.example.ecommercemongodb.configuration;
+package com.example.ecommerceuser.configuration;
 
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
 @Configuration
-public class FollowerDataSourceConfig {
-
+public class LeaderDataSourceConfig {
 
     @Bean
-    @ConfigurationProperties("spring.datasource.follower")
-    public DataSourceProperties followerDataSourceProperties() {
+    @ConfigurationProperties("spring.datasource.leader")
+    public DataSourceProperties leaderDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Primary
-    @Bean(name = "followerDataSource")
-    public DataSource followerDataSource() {
-        return followerDataSourceProperties()
+    @Bean(name = "leaderDataSource")
+    public DataSource leaderDataSource() {
+        return leaderDataSourceProperties()
                 .initializeDataSourceBuilder()
                 .build();
     }
